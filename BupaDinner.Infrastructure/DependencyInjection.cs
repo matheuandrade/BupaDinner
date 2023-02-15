@@ -1,6 +1,8 @@
 using BupaDinner.Application.Common.Interfaces.Authentication;
+using BupaDinner.Application.Common.Interfaces.Persistance;
 using BupaDinner.Application.Common.Services;
 using BupaDinner.Infrastructure.Authentication;
+using BupaDinner.Infrastructure.Persistance;
 using BupaDinner.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +19,9 @@ public static class DependencyInjection
        
        services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
        services.AddSingleton<IDateTimeProvider, DateTimeProvider>(); 
+
+       services.AddScoped<IUserRepository, UserRepository>(); 
+
        return services;
     }
 }
